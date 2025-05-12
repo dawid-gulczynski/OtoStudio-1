@@ -18,11 +18,39 @@ async function loadStudios() {
   });
 }
 
+const form = document.getElementById("add-form");
+
+form.addEventListener("submit", (event) => {
+  const name = document.querySelector('input[placeholder="Nazwa"]').value;
+  const price = document.querySelector('input[placeholder="Cena"]').value;
+  const imageUrl = document.querySelector('input[placeholder="url"]').value;
+
+  const data = {
+    name: name,
+    price: price,
+    imageUrl: imageUrl,
+  };
+
+  addStudio(data);
+});
+
 async function deleteStudio(id) {
   await fetch(`${API_URL}/${id}`, {
     method: "DELETE",
   });
   loadStudios();
+}
+
+async function addStudio(data) {
+  await fetch(`${API_URL}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).catch((error) => {
+    console.error("Wystąpił błąd:", error);
+  });
 }
 
 loadStudios();
