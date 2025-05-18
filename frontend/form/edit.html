@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edytuj Studio</title>
+  <link rel="stylesheet" href="/form/styles.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">OtoStudio</a></h1>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h2>Edytuj Studio</h2>
+      <form id="edit-form">
+        <input name="name" placeholder="Nazwa studia" required />
+        <input name="price" type="number" placeholder="Cena" required />
+        <input name="url" placeholder="Link do zdjęcia" required />
+        <select name="type" required>
+          <option value="rent">Wynajem</option>
+          <option value="sale">Sprzedaż</option>
+        </select>
+        <textarea name="description" placeholder="Opis studia"></textarea>
+        <button type="submit">Zapisz</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const form = document.getElementById("edit-form");
+
+    fetch(`http://localhost:3000/api/studios/${id}`)
+      .then(res => res.json())
+      .then(studio => {
+        form.name.value = studio.name;
+        form.price.value = studio.price;
+        form.url.value = studio.imageUrl;
+        form.type.value = studio.isForSale ? "sale" : "rent";
+        form.description.value = studio.description || "";
+      });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const updated = {
+        name: form.name.value,
+        price: form.price.value,
+        imageUrl: form.url.value,
+        isForSale: form.type.value === "sale",
+        description: form.description.value
+      };
+      await fetch(`http://localhost:3000/api/studios/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated)
+      });
+      alert("Zaktualizowano!");
+      window.location.href = `/details/studio.html?id=${id}`;
+    });
+  </script>
+</body>
+</html>

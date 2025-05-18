@@ -1,0 +1,231 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  /* background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
+  background: radial-gradient(circle at top left, #1e2b3a, #121c29 70%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #fff;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.02;
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  color: #00ffe0;
+  font-size: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.5s, color 0.2s;
+}
+
+header h1:hover {
+  color: #00bfa6;
+  transform: scale(1.1);
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header button {
+  background: #00ffe0;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+header button:hover {
+  background: #00bfa6;
+}
+
+main {
+  padding: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: #00ffe0;
+}
+.studio-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.studio-list li {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.studio-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0, 255, 255, 0.2);
+}
+
+.studio-list img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.studio-list h3 {
+  margin: 0.5rem 0;
+}
+
+.studio-list p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.studio-list button {
+  margin-top: 0.8rem;
+  background: #ff5e57;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #1e1e2f;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content button {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.6rem 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.modal-content input {
+  width: 95%;
+}
+
+.modal-content button {
+  background: #00ffe0;
+  color: #000;
+  font-weight: bold;
+}
+
+.modal-content textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin: 0.6rem 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.controls {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  width: 100%;
+  justify-content: center;
+}
+
+#search-input {
+  flex: 2;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: #fff;
+  color: #333;
+  min-width: 220px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.1);
+}
+
+#sort-select {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: #00ffe0;
+  color: #000;
+  font-weight: bold;
+  min-width: 180px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,255,255,0.4);
+}
+
+#sort-select:hover {
+  background: #00ccbb;
+}
+
+

@@ -5,6 +5,10 @@ async function getAllStudios() {
     return await Studio.findAll();
 }
 
+async function getStudioById(id) {
+  return await Studio.findByPk(id);
+}
+
 async function createStudio(data) {
     return await Studio.create(data);
 }
@@ -20,6 +24,7 @@ async function deleteStudio(id) {
 
 module.exports = {
     getAllStudios,
+    getStudioById,
     createStudio,
     updateStudio,
     deleteStudio

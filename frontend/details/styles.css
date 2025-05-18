@@ -1,0 +1,115 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top left, #1e2b3a, #121c29 70%);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.02;
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  color: #00ffe0;
+  font-size: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.5s, color 0.2s;
+}
+
+header h1:hover {
+  color: #00bfa6;
+  transform: scale(1.1);
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.studio-details {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.studio-details img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+
+.studio-details h1 {
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  color: #00ffe0;
+}
+
+.studio-details p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.studio-details strong {
+  color: #fff;
+}
+
+.studio-details button {
+  font-weight: bold;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.edit-btn {
+  background: #00ffe0;
+  color: #000;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+.edit-btn:hover {
+  background: #00ccbb;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.3);
+}
+
+.delete-btn:hover {
+  background: #e60000;
+}
+
+
+
+

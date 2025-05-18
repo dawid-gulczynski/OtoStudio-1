@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OtoStudio – Twoje studio muzyczne</title>
+  <link rel="stylesheet" href="/list/styles.css">
+</head>
+<body>
+  <header>
+    <h1>OtoStudio</h1>
+    <button id="open-modal">+ Dodaj Studio</button>
+  </header>
+
+  <section class="controls">
+  <div class="filters">
+    <input type="text" id="search-input" placeholder="Wyszukaj studio po nazwie..." />
+    <select id="sort-select">
+      <option value="newest">Sortuj: Najnowsze</option>
+      <option value="oldest">Sortuj: Najstarsze</option>
+      <option value="name-asc">Sortuj: A-Z</option>
+      <option value="name-desc">Sortuj: Z-A</option>
+    </select>
+  </div>
+</section>
+
+  <main>
+    <ul id="studio-list" class="studio-list"></ul>
+  </main>
+
+  <div class="modal" id="studio-modal">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <h2>Dodaj nowe studio</h2>
+      <form id="add-form">
+        <input name="name" placeholder="Nazwa studia" required />
+        <input name="price" type="number" placeholder="Cena (PLN)" required />
+        <input name="url" placeholder="Link do zdjęcia" required />
+        <textarea name="description" placeholder="Opis studia" rows="4"></textarea>
+        <select name="type" required>
+          <option value="rent">Wynajem</option>
+          <option value="sale">Sprzedaż</option>
+        </select>
+        <button type="submit">Dodaj</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/list/script.js"></script>
+</body>
+</html>

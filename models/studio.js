@@ -13,7 +13,15 @@ const Studio = sequelize.define('Studio', {
     imageUrl: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    isForSale: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false
+  }
 });
 
 module.exports = Studio;

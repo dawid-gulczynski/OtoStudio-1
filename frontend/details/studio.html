@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Szczegóły Studia</title>
+  <link rel="stylesheet" href="/details/styles.css" />
+</head>
+<body>
+    <header>
+      <h1><a href="/">OtoStudio</a></h1>
+    </header>
+  <div class="studio-details" id="studio-details"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    fetch(`http://localhost:3000/api/studios/${id}`)
+      .then(res => res.json())
+      .then(studio => {
+        document.getElementById("studio-details").innerHTML = `
+          <img src="${studio.imageUrl}" alt="${studio.name}"/>
+          <h1>${studio.name}</h1>
+          <p><strong>${studio.isForSale ? "Na sprzedaż" : "Na wynajem"}</strong> – ${studio.price} ${studio.isForSale ? "PLN" : "PLN/h"}</p>
+          <p>${studio.description || "Brak opisu."}</p>
+          <div class="button-row">
+            <button class="edit-btn" onclick="location.href='/form/edit.html?id=${studio.id}'">Edytuj</button>
+            <button class="delete-btn" onclick="deleteStudio('${studio.id}')">Usuń</button>
+          </div>
+        `;
+      });
+
+      async function deleteStudio(id) {
+        const confirmed = confirm("Czy na pewno chcesz usunąć to studio?");
+        if (!confirmed) return;
+
+        await fetch(`http://localhost:3000/api/studios/${id}`, {
+          method: "DELETE"
+        });
+
+        alert("Studio zostało usunięte.");
+        window.location.href = "/";
+      }
+  </script>
+</body>
+</html>
