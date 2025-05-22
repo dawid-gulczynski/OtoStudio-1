@@ -95,7 +95,7 @@ document.getElementById("add-form").addEventListener("submit", async (e) => {
 
     } catch (error) {
       console.error("Błąd dodawania studia:", error);
-      alert(error.message || "Wystąpił błąd podczas dodawania studia.");
+      alert("Wystąpił błąd podczas dodawania studia.");
     }
 });
 
