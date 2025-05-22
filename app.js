@@ -17,7 +17,7 @@ app.use("/api/studios", studioRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ message: "Coś się zepsuło :c" });
+  res.status(500).json({ message: "Wystąpił błąd." });
 });
 
 sequelize

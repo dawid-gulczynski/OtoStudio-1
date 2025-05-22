@@ -67,19 +67,36 @@ document.getElementById("add-form").addEventListener("submit", async (e) => {
   const type = form.type.value;
   const description = form.description.value;
 
-
   const isForSale = type === "sale";
+  
+  try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, price, imageUrl, description, isForSale })
+      });
 
-  await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, price, imageUrl, description, isForSale })
-  });
+      if (!response.ok) {
+        let errorMsg = "Wystąpił błąd podczas dodawania studia.";
+        try {
+          const errorData = await response.json();
+          if (errorData.message) errorMsg = errorData.message;
+        } catch (jsonErr) {
+          console.warn("Nie można sparsować błędu JSON:", jsonErr);
+        }
+        throw new Error(errorMsg);
+      }
 
-  form.reset();
-  modal.style.display = "none";
+      alert("Studio zostało dodane pomyślnie!");
 
-  loadStudios();
+      form.reset();
+      modal.style.display = "none";
+      loadStudios();
+
+    } catch (error) {
+      console.error("Błąd dodawania studia:", error);
+      alert(error.message || "Wystąpił błąd podczas dodawania studia.");
+    }
 });
 
 searchInput.addEventListener("input", loadStudios);
